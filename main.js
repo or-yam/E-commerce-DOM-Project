@@ -69,7 +69,7 @@ const renderProducts = function () {
     img.src = imgUrl;
     img.style.height = '200px';
 
-    newProduct.innerHTML = `Product: ${name} Price: ${price}$ `;
+    newProduct.innerHTML = `${name} Price: ${price}$ `;
     newProduct.appendChild(img);
 
     let addBtn = document.createElement('button');
@@ -84,6 +84,11 @@ const renderProducts = function () {
 
 const renderCart = function () {
   let cartSection = document.createElement('ul');
+  if (cart.length === 0) {
+    let emptyMessage = document.createElement('p');
+    emptyMessage.innerHTML = `Cart is Empty`;
+    cartSection.appendChild(emptyMessage);
+  }
   if (!content.hasChildNodes()) {
     content.appendChild(cartSection);
   } else {

@@ -59,24 +59,27 @@ const renderProducts = function () {
     content.removeChild(content.firstChild);
     content.appendChild(productsSection);
   }
-  for (product of products) {
+  for (i = 0; i < products.length; i++) {
     let newProduct = document.createElement('li');
-    let name = product.name;
-    let price = product.price;
-    let imgUrl = product.img;
+    let name = products[i].name;
+    let price = products[i].price;
+    let imgUrl = products[i].img;
     let img = document.createElement('img');
+
     img.src = imgUrl;
     img.style.height = '200px';
+
     newProduct.innerHTML = `Product: ${name} Price: ${price}$ `;
     newProduct.appendChild(img);
+
     let addBtn = document.createElement('button');
     addBtn.innerHTML = 'Add To Cart';
-    addBtn.setAttribute('id', 'addBtn');
+    addBtn.setAttribute('class', 'addBtn');
+    addBtn.setAttribute('id', i);
     newProduct.appendChild(addBtn);
     productsSection.appendChild(newProduct);
+    addBtn.onclick = addToCart;
   }
-  const addToCartBtn = document.getElementById('addBtn');
-  addToCartBtn.onclick = addToCart;
 };
 
 const renderCart = function () {
@@ -87,23 +90,39 @@ const renderCart = function () {
     content.removeChild(content.firstChild);
     content.appendChild(cartSection);
   }
-  for (product of cart) {
+  for (i = 0; i < cart.length; i++) {
     let newProduct = document.createElement('li');
-    let name = product.name;
-    let price = product.price;
-    let imgUrl = product.img;
+    let name = cart[i].name;
+    let price = cart[i].price;
+    let imgUrl = cart[i].img;
     let img = document.createElement('img');
     img.src = imgUrl;
     img.style.height = '200px';
     newProduct.innerHTML = `Product: ${name} Price: ${price}$ `;
     newProduct.appendChild(img);
+
+    let rmvBtn = document.createElement('button');
+    rmvBtn.innerHTML = 'Remove From Cart';
+    rmvBtn.setAttribute('class', 'rmvBtn');
+    rmvBtn.setAttribute('id', i);
+    newProduct.appendChild(rmvBtn);
+
     cartSection.appendChild(newProduct);
+    rmvBtn.onclick = removeFromCart;
   }
 };
 
-const addToCart = function (productID) {
+const addToCart = function () {
+  let productID = document.getElementById(this.id).id;
   let item = products[productID];
   cart.push(item);
+};
+
+const removeFromCart = function () {
+  let productID = document.getElementById(this.id).id;
+  let item = products[productID];
+  cart.splice(productID, 1);
+  renderCart();
 };
 
 aboutBtn.onclick = renderAbout;

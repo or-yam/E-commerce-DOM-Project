@@ -2,7 +2,7 @@ const aboutBtn = document.getElementById('aboutBtn');
 const productsBtn = document.getElementById('productsBtn');
 const cartBtn = document.getElementById('cartBtn');
 const content = document.getElementById('main-container');
-
+const cartCounter = document.getElementById('cart-counter');
 let cart = [
   {
     name: 'CYCLOPS MASK',
@@ -37,6 +37,8 @@ let products = [
       'https://cdn.shopify.com/s/files/1/0784/0801/products/DSC06056_s_cleaned_2000x.jpg?v=1576152626',
   },
 ];
+
+cartCounter.innerHTML=cart.length
 
 const renderAbout = function () {
   let text =
@@ -121,14 +123,18 @@ const addToCart = function () {
   let productID = document.getElementById(this.id).id;
   let item = products[productID];
   cart.push(item);
+  cartCounter.innerHTML=cart.length
 };
 
 const removeFromCart = function () {
   let productID = document.getElementById(this.id).id;
   let item = products[productID];
   cart.splice(productID, 1);
+  cartCounter.innerHTML=cart.length
   renderCart();
 };
+
+
 
 aboutBtn.onclick = renderAbout;
 productsBtn.onclick = renderProducts;

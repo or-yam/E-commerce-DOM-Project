@@ -26,6 +26,12 @@ body {
   cursor: pointer;
   text-align: center;
 }
+#cart-counter, #cart-box{
+    float: right;
+    z-index: +5;
+    color: black;
+    position: relative;
+}
 
 #main-container {
   text-align: center;

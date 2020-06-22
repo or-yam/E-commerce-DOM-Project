@@ -1,8 +1,10 @@
 const aboutBtn = document.getElementById('aboutBtn');
 const productsBtn = document.getElementById('productsBtn');
 const cartBtn = document.getElementById('cartBtn');
+const cartLogo = document.getElementById('cart-logo');
 const content = document.getElementById('main-container');
 const cartCounter = document.getElementById('cart-counter');
+const logoBtn = document.getElementById('logoBtn');
 let cart = [
   {
     name: 'CYCLOPS MASK',
@@ -38,13 +40,34 @@ let products = [
   },
 ];
 
-cartCounter.innerHTML=cart.length
+cartCounter.innerHTML = cart.length;
+
+const homePageRender = function () {
+  let imgUrl =
+    'https://cdn.shopify.com/s/files/1/0784/0801/files/Wintercroft-Logo-Main_410x.png?v=1496271428';
+  let img = document.createElement('img');
+  img.src = imgUrl;
+  img.setAttribute('class', 'home');
+  if (!content.hasChildNodes()) {
+    content.appendChild(img);
+  } else {
+    content.removeChild(content.firstChild);
+    content.appendChild(img);
+  }
+};
+
+homePageRender();
 
 const renderAbout = function () {
   let text =
     'We supply digital templates that help you to turn the ordinary into the extraordinary. Use them to turn a pile of card into a fantastical Low Polygon Mask. With a little guidance, anyone can create something beautiful and anyone can join our global creative community. Download, print, build it, wear it and share your creation with the World.If you are ready to take the first step on a creative journey, let us be your guide.';
+  let header = 'Who We Are...';
   let aboutSection = document.createElement('p');
+  let aboutHeader = document.createElement('h1');
   aboutSection.innerHTML = text;
+  aboutHeader.innerHTML = header;
+  aboutSection.insertBefore(aboutHeader, aboutSection.childNodes[0]);
+
   if (!content.hasChildNodes()) {
     content.appendChild(aboutSection);
   } else {
@@ -123,19 +146,19 @@ const addToCart = function () {
   let productID = document.getElementById(this.id).id;
   let item = products[productID];
   cart.push(item);
-  cartCounter.innerHTML=cart.length
+  cartCounter.innerHTML = cart.length;
 };
 
 const removeFromCart = function () {
   let productID = document.getElementById(this.id).id;
   let item = products[productID];
   cart.splice(productID, 1);
-  cartCounter.innerHTML=cart.length
+  cartCounter.innerHTML = cart.length;
   renderCart();
 };
-
-
 
 aboutBtn.onclick = renderAbout;
 productsBtn.onclick = renderProducts;
 cartBtn.onclick = renderCart;
+cartLogo.onclick = renderCart;
+logoBtn.onclick = homePageRender;

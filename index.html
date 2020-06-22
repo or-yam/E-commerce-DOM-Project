@@ -4,23 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Mono:ital,wght@0,400;1,500&display=swap"
+      rel="stylesheet"
+    />
     <title>E-commence</title>
   </head>
   <body>
     <nav id="nav-bar">
+      <span><button class="nab-btn" id="logoBtn"><i class="fas fa-dragon fa-3x"></i></button></span>
       <span><button class="nav-btn" id="aboutBtn">About-Us</button></span>
       <span
         ><button class="nav-btn" id="productsBtn">All Products</button></span
       >
       <span><button class="nav-btn" id="cartBtn">Cart</button></span>
+      <div id="cart-box">
+        <i id="cart-logo" class="fas fa-shopping-cart fa-2x"></i>
+        <div id="cart-counter">0</div>
+      </div>
     </nav>
-    <div id="cart-box">
-      Cart:
-      <div id="cart-counter">0</div>
-    </div>
 
     <div id="main-container"></div>
 
     <script src="main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/d146787bb2.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

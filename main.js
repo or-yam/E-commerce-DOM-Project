@@ -157,6 +157,24 @@ const removeFromCart = function () {
   renderCart();
 };
 
+const rmvPopUp = () => {
+  document.getElementById('popBox').style.display = 'none';
+};
+
+const popUpRender = () => {
+  let popUp = document.createElement('div');
+  let closeBtn = document.createElement('button');
+  popUp.setAttribute('id', 'popBox');
+  closeBtn.setAttribute('id', 'clsBtn');
+  closeBtn.innerHTML = 'close';
+  closeBtn.onclick = rmvPopUp;
+  popUp.innerHTML = 'On Sale!';
+  popUp.appendChild(closeBtn);
+  document.body.appendChild(popUp);
+};
+
+setTimeout(popUpRender, 5000);
+
 aboutBtn.onclick = renderAbout;
 productsBtn.onclick = renderProducts;
 cartBtn.onclick = renderCart;

@@ -166,7 +166,7 @@ const popUpRender = () => {
   let closeBtn = document.createElement('button');
   popUp.setAttribute('id', 'popBox');
   closeBtn.setAttribute('id', 'clsBtn');
-  closeBtn.innerHTML = 'close';
+  closeBtn.innerHTML = 'X';
   closeBtn.onclick = rmvPopUp;
   popUp.innerHTML = 'On Sale!';
   popUp.appendChild(closeBtn);
